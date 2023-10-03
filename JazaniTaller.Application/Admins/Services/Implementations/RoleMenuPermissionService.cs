@@ -20,12 +20,16 @@ namespace JazaniTaller.Application.Admins.Services.Implementations
             return _mapper.Map<IReadOnlyList<RoleMenuPermissionDto>>(Roles);
 
         }
-        public async Task<RoleMenuPermissionDto?> FindByIdAsync(int id)
+        public async Task<RoleMenuPermissionDto?> FindByIdAsync(int roleId)
         {
-            RoleMenuPermission? Role = await _RoleMenuPermissionRepository.FindByIdAsync(id);
+            RoleMenuPermission? Role = await _RoleMenuPermissionRepository.FindByIdAsync(roleId);
             return _mapper.Map<RoleMenuPermissionDto>(Role);
         }
-
+        public async Task<RoleMenuPermissionDto?> FindByIdCompuesto(int roleId, int menuId, int permissionId)
+        {
+            RoleMenuPermission? Role = await _RoleMenuPermissionRepository.FindByIdCompuesto(roleId,menuId,permissionId);
+            return _mapper.Map<RoleMenuPermissionDto>(Role);
+        }
         public async Task<RoleMenuPermissionDto> CreateAsync(RoleMenuPermissionSaveDto saveDto)
         {
             RoleMenuPermission Role = _mapper.Map<RoleMenuPermission>(saveDto);
@@ -37,9 +41,9 @@ namespace JazaniTaller.Application.Admins.Services.Implementations
 
         public async Task<RoleMenuPermissionDto> EditAsync(int id, RoleMenuPermissionSaveDto RolesaveDto)
         {
-            RoleMenuPermission Role = await _RoleMenuPermissionRepository.FindByIdAsync(id);
-            _mapper.Map<RoleMenuPermissionSaveDto, RoleMenuPermission>(RolesaveDto, Role);
-            RoleMenuPermission RoleSaved = await _RoleMenuPermissionRepository.SaveAsync(Role);
+            RoleMenuPermission RoleMenuPermission = await _RoleMenuPermissionRepository.FindByIdAsync(id);
+            _mapper.Map<RoleMenuPermissionSaveDto, RoleMenuPermission>(RolesaveDto, RoleMenuPermission);
+            RoleMenuPermission RoleSaved = await _RoleMenuPermissionRepository.SaveAsync(RoleMenuPermission);
             return _mapper.Map<RoleMenuPermissionDto>(RoleSaved);
         }
 

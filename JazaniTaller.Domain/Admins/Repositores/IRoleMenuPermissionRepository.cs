@@ -7,5 +7,6 @@ namespace JazaniTaller.Domain.Admins.Repositores
         Task<IReadOnlyList<RoleMenuPermission>> FindAllAsync();
         Task<RoleMenuPermission?> FindByIdAsync(int id);
         Task<RoleMenuPermission?> SaveAsync(RoleMenuPermission office);
+        Task<RoleMenuPermission?> FindByIdCompuesto(int roleId, int menuId, int permissionId);
     }
 }

@@ -26,6 +26,10 @@ namespace JazaniTaller.Infraestructure.Admins.Persistances
         {
             return await _dbContext.RoleMenuPermissions.FirstOrDefaultAsync(x => x.RoleId == id);
         }
+        public async Task<RoleMenuPermission?> FindByIdCompuesto(int roleId,int menuId, int permissionId)
+        {
+            return await _dbContext.RoleMenuPermissions.FirstOrDefaultAsync(x => x.RoleId == roleId && x.MenuId== menuId && x.PermissionId== permissionId);
+        }
         public async Task<RoleMenuPermission?> SaveAsync(RoleMenuPermission roleMenuPermission)
         {
             EntityState state = _dbContext.Entry(roleMenuPermission).State;
