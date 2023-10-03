@@ -1,0 +1,6 @@
+@JazaniTaller01_HostAddress = http://localhost:5121
+
+GET {{JazaniTaller01_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
