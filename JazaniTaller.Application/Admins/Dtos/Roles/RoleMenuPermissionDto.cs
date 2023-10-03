@@ -1,6 +1,12 @@
-﻿namespace JazaniTaller.Domain.Admins.Models
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace JazaniTaller.Application.Admins.Dtos.Roles
 {
-    public class RoleMenuPermission
+    public class RoleMenuPermissionDto
     {
         public int RoleId { get; set; }
         public int MenuId { get; set; }

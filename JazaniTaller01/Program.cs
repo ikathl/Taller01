@@ -20,6 +20,7 @@ builder.Services.AddApplicationServices();
 
 //AutoMapper 
 builder.Services.AddAutoMapper(typeof(RoleMapper));
+builder.Services.AddAutoMapper(typeof(RoleMenuPermissionMapper));
 
 
 var app = builder.Build();

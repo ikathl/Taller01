@@ -14,12 +14,14 @@ namespace JazaniTaller.Infraestructure.Cores.Contexts
         }
         #region "DBSet"
         public DbSet<Role> Roles { get; set; }
+        public DbSet<RoleMenuPermission> RoleMenuPermissions { get; set; }
 
         #endregion
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleMenuPermissionConfiguration());
         }
     }
 }

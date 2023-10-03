@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace JazaniTaller.Application.Admins.Dtos.Roles
 {
-    public class RoleSaveDto
+    public class RoleMenuPermissionSaveDto
     {
-        public string Name { get; set; }
-        public string? Description { get; set; }
+        public int RoleId { get; set; }
+        public int MenuId { get; set; }
+        public int PermissionId { get; set; }
     }
 }

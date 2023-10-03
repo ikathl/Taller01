@@ -10,6 +10,8 @@ namespace JazaniTaller.Infraestructure.Admins.Configurations
         {
             builder.ToTable("role", "adm");
             builder.HasKey(x => x.Id);
+            //builder.HasAlternateKey(x => x.Name).HasName("name");
+            builder.Property(x => x.Name).HasColumnName("name");
             builder.Property(x => x.Description).HasColumnName("description");
             builder.Property(t => t.RegistrationDate).HasColumnName("registrationdate");
             builder.Property(t => t.State).HasColumnName("state");

@@ -9,9 +9,9 @@ namespace JazaniTaller01.Controllers.Admins
     {
         private readonly IRoleService _roleService;
 
-        public RoleController(IRoleService officeService)
+        public RoleController(IRoleService roleService)
         {
-            _roleService = officeService;
+            _roleService = roleService;
         }
         // GET: 
         [HttpGet]

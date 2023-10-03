@@ -15,6 +15,7 @@ namespace JazaniTaller.Infraestructure.Cores.Contexts
                 options.UseSqlServer(configuration.GetConnectionString("DbConnection"));
             });
             services.AddTransient<IRoleRepository, RoleRepository>();
+            services.AddTransient<IRoleMenuPermissionRepository, RoleMenuPermissionRepository>();
             return services;
         }
     }
