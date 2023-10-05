@@ -1,8 +1,7 @@
-using JazaniTaller.Application.Admins.Dtos.Roles.Mappers;
-using JazaniTaller.Infraestructure.Cores.Contexts;
-using JazaniTaller.Application.Cores.Contexts;
-using Autofac.Extensions.DependencyInjection;
 using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using JazaniTaller.Application.Cores.Contexts;
+using JazaniTaller.Infraestructure.Cores.Contexts;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -7,5 +7,8 @@
         public int PermissionId { get; set; }
         public DateTime RegistrationDate { get; set; }
         public bool State { get; set; }
+
+        public virtual Menu Menu { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

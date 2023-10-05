@@ -2,7 +2,6 @@
 using JazaniTaller.Domain.Admins.Repositores;
 using JazaniTaller.Infraestructure.Cores.Contexts;
 using JazaniTaller.Infraestructure.Cores.Persistances;
-using Microsoft.EntityFrameworkCore;
 
 namespace JazaniTaller.Infraestructure.Admins.Persistances
 {

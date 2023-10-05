@@ -13,14 +13,27 @@ namespace JazaniTaller.Infraestructure.Admins.Persistances
 {
     public class RoleMenuPermissionRepository:CrudRepository<RoleMenuPermission, int>, IRoleMenuPermissionRepository
     {
-        public RoleMenuPermissionRepository(ApplicationDbContext context) : base(context)
+        private readonly ApplicationDbContext _dbContext;
+        public RoleMenuPermissionRepository(ApplicationDbContext dbContext) : base(dbContext)
         {
-
+            _dbContext = dbContext;
         }
 
-        //public async Task<RoleMenuPermission?> FindByIdCompuesto(int roleId, int menuId, int permissionId)
-        //{
-        //    return await FirstOrDefaultAsync(x => x.RoleId == roleId && x.MenuId == menuId && x.PermissionId == permissionId);
-        //}
+        public override async Task<IReadOnlyList<RoleMenuPermission>> FindAllAsync()
+        {
+            return await _dbContext.Set<RoleMenuPermission>()
+                .Include(t => t.Menu)
+                .Include(t => t.Role)
+                .AsNoTracking()
+                .ToListAsync();
+        }
+
+        public async Task<RoleMenuPermission?> FindByIdCompuesto(int roleId, int menuId, int permissionId)
+        {
+            return await _dbContext.Set<RoleMenuPermission>()
+                .Include(t => t.Menu)
+                .Include(t => t.Role)
+                .FirstOrDefaultAsync(t => t.RoleId == roleId & t.MenuId == menuId);
+        }
     }
 }

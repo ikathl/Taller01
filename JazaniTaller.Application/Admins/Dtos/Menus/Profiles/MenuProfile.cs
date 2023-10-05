@@ -7,8 +7,9 @@ namespace JazaniTaller.Application.Admins.Dtos.Menus.Profiles
     {
         public MenuProfile()
         {
-            CreateMap<Domain.Admins.Models.Menu, MenuDto>();
-            CreateMap<Domain.Admins.Models.Menu, MenuSaveDto>().ReverseMap();
+            CreateMap<Menu, MenuDto>();
+            CreateMap<Menu, MenuSimpleDto>();
+            CreateMap<Menu, MenuSaveDto>().ReverseMap();
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using JazaniTaller.Application.Admins.Dtos.Menus;
-using JazaniTaller.Application.Admins.Dtos.Roles;
 
 namespace JazaniTaller.Application.Admins.Services
 {

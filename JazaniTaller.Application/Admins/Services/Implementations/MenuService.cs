@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
+using JazaniTaller.Application.Admins.Dtos.Menus;
 using JazaniTaller.Domain.Admins.Models;
 using JazaniTaller.Domain.Admins.Repositores;
-using JazaniTaller.Application.Admins.Dtos.Menus;
-using JazaniTaller.Application.Admins.Services;
 
 namespace JazaniTaller.Application.Admins.Services.Implementations
 {
-    public class MenuService: IMenuService
+    internal class MenuService : IMenuService
     {
         private readonly IMenuRepository _MenuRepository;
         private readonly IMapper _mapper;

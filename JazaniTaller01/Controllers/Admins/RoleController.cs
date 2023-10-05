@@ -2,7 +2,7 @@
 using JazaniTaller.Application.Admins.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace JazaniTaller01.Controllers.Admins
+namespace JazaniTaller.Controllers.Admins
 {
     [Route("api/[Controller]")]
     public class RoleController : Controller

@@ -17,6 +17,7 @@ namespace JazaniTaller.Infraestructure.Admins.Configurations
                  .HasColumnName("registrationdate")
                  .HasConversion(new DateTimeToDateTimeOffset());
             builder.Property(t => t.State).HasColumnName("state");
+            builder.HasIndex(x => x.Name).IsUnique(); 
         }
     }
 }

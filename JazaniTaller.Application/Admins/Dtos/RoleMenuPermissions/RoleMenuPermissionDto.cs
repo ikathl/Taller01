@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using JazaniTaller.Application.Admins.Dtos.Menus;
+using JazaniTaller.Application.Admins.Dtos.Roles;
 
 namespace JazaniTaller.Application.Admins.Dtos.RoleMenuPermissions
 {
@@ -13,5 +10,7 @@ namespace JazaniTaller.Application.Admins.Dtos.RoleMenuPermissions
         public int PermissionId { get; set; }
         public DateTimeOffset RegistrationDate { get; set; }
         public bool State { get; set; }
+        public MenuSimpleDto Menu { get; set; }
+        public RoleSimpleDto Role { get; set; }
     }
 }
