@@ -1,6 +1,7 @@
 ﻿using JazaniTaller.Domain.Admins.Models;
 using JazaniTaller.Domain.Admins.Repositores;
 using JazaniTaller.Infraestructure.Cores.Contexts;
+using JazaniTaller.Infraestructure.Cores.Persistances;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,39 +11,16 @@ using System.Threading.Tasks;
 
 namespace JazaniTaller.Infraestructure.Admins.Persistances
 {
-    public class RoleMenuPermissionRepository:IRoleMenuPermissionRepository
+    public class RoleMenuPermissionRepository:CrudRepository<RoleMenuPermission, int>, IRoleMenuPermissionRepository
     {
-        private readonly ApplicationDbContext _dbContext;
-        public RoleMenuPermissionRepository(ApplicationDbContext dbContext)
+        public RoleMenuPermissionRepository(ApplicationDbContext context) : base(context)
         {
-            _dbContext = dbContext;
-        }
-        public async Task<IReadOnlyList<RoleMenuPermission>> FindAllAsync()
-        {
-            return await _dbContext.RoleMenuPermissions.ToListAsync();
-        }
-
-        public async Task<RoleMenuPermission?> FindByIdAsync(int id)
-        {
-            return await _dbContext.RoleMenuPermissions.FirstOrDefaultAsync(x => x.RoleId == id);
-        }
-        public async Task<RoleMenuPermission?> FindByIdCompuesto(int roleId,int menuId, int permissionId)
-        {
-            return await _dbContext.RoleMenuPermissions.FirstOrDefaultAsync(x => x.RoleId == roleId && x.MenuId== menuId && x.PermissionId== permissionId);
-        }
-        public async Task<RoleMenuPermission?> SaveAsync(RoleMenuPermission roleMenuPermission)
-        {
-            EntityState state = _dbContext.Entry(roleMenuPermission).State;
-            _ = state switch
-            {
-                EntityState.Detached => _dbContext.RoleMenuPermissions.Add(roleMenuPermission),
-                EntityState.Modified => _dbContext.RoleMenuPermissions.Update(roleMenuPermission),
-            };
-
-            await _dbContext.SaveChangesAsync();
-
-            return roleMenuPermission;
 
         }
+
+        //public async Task<RoleMenuPermission?> FindByIdCompuesto(int roleId, int menuId, int permissionId)
+        //{
+        //    return await FirstOrDefaultAsync(x => x.RoleId == roleId && x.MenuId == menuId && x.PermissionId == permissionId);
+        //}
     }
 }

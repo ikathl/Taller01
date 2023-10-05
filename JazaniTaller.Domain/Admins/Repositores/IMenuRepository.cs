@@ -3,9 +3,8 @@ using JazaniTaller.Domain.Cores.Repositories;
 
 namespace JazaniTaller.Domain.Admins.Repositores
 {
-    public interface IRoleRepository : ICrudRepository<Role, int>
+    public interface IMenuRepository : ICrudRepository<Menu, int>
     {
-        
+
     }
-    
 }

@@ -1,6 +1,5 @@
-﻿using JazaniTaller.Domain.Admins.Models;
-using JazaniTaller.Infraestructure.Admins.Configurations;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace JazaniTaller.Infraestructure.Cores.Contexts
 {
@@ -12,16 +11,17 @@ namespace JazaniTaller.Infraestructure.Cores.Contexts
         {
 
         }
-        #region "DBSet"
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<RoleMenuPermission> RoleMenuPermissions { get; set; }
+        //#region "DBSet"
+        //public DbSet<Role> Roles { get; set; }
+        //public DbSet<RoleMenuPermission> RoleMenuPermissions { get; set; }
 
-        #endregion
+        //#endregion
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfiguration(new RoleConfiguration());
-            modelBuilder.ApplyConfiguration(new RoleMenuPermissionConfiguration());
+            //modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            //modelBuilder.ApplyConfiguration(new RoleMenuPermissionConfiguration());
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }
 }

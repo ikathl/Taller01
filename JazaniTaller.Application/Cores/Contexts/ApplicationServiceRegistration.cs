@@ -13,8 +13,8 @@ namespace JazaniTaller.Application.Cores.Contexts
 
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-            services.AddTransient<IRoleService, RoleService>();
-            services.AddTransient<IRoleMenuPermissionService, RoleMenuPermissionService>();
+            //services.AddTransient<IRoleService, RoleService>();
+            //services.AddTransient<IRoleMenuPermissionService, RoleMenuPermissionService>();
 
             return services;
         }

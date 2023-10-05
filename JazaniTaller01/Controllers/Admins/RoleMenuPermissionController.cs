@@ -1,4 +1,4 @@
-﻿using JazaniTaller.Application.Admins.Dtos.Roles;
+﻿using JazaniTaller.Application.Admins.Dtos.RoleMenuPermissions;
 using JazaniTaller.Application.Admins.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,11 +24,11 @@ namespace JazaniTaller.Api.Controllers.Admins
         {
             return await _roleMenuPermissionService.FindByIdAsync(id);
         }
-        [HttpGet("{roleid},{menuid},{permissionid}")]
-        public async Task<RoleMenuPermissionDto> GetByIdCompuesto(int roleid, int menuid, int permissionid)
-        {
-            return await _roleMenuPermissionService.FindByIdCompuesto (roleid, menuid, permissionid);
-        }
+        //[HttpGet("{roleid},{menuid},{permissionid}")]
+        //public async Task<RoleMenuPermissionDto> GetByIdCompuesto(int roleid, int menuid, int permissionid)
+        //{
+        //    return await _roleMenuPermissionService.FindByIdCompuesto (roleid, menuid, permissionid);
+        //}
         [HttpPost]
         public async Task<RoleMenuPermissionDto> Post([FromBody] RoleMenuPermissionSaveDto roleSaveDto)
         {

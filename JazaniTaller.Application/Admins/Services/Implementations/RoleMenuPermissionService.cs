@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using JazaniTaller.Application.Admins.Dtos.Roles;
+using JazaniTaller.Application.Admins.Dtos.RoleMenuPermissions;
 using JazaniTaller.Domain.Admins.Models;
 using JazaniTaller.Domain.Admins.Repositores;
 
@@ -25,11 +25,11 @@ namespace JazaniTaller.Application.Admins.Services.Implementations
             RoleMenuPermission? Role = await _RoleMenuPermissionRepository.FindByIdAsync(roleId);
             return _mapper.Map<RoleMenuPermissionDto>(Role);
         }
-        public async Task<RoleMenuPermissionDto?> FindByIdCompuesto(int roleId, int menuId, int permissionId)
-        {
-            RoleMenuPermission? Role = await _RoleMenuPermissionRepository.FindByIdCompuesto(roleId,menuId,permissionId);
-            return _mapper.Map<RoleMenuPermissionDto>(Role);
-        }
+        //public async Task<RoleMenuPermissionDto?> FindByIdCompuesto(int roleId, int menuId, int permissionId)
+        //{
+        //    RoleMenuPermission? Role = await _RoleMenuPermissionRepository.FindByIdCompuesto(roleId,menuId,permissionId);
+        //    return _mapper.Map<RoleMenuPermissionDto>(Role);
+        //}
         public async Task<RoleMenuPermissionDto> CreateAsync(RoleMenuPermissionSaveDto saveDto)
         {
             RoleMenuPermission Role = _mapper.Map<RoleMenuPermission>(saveDto);

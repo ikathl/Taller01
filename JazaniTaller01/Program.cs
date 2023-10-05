@@ -1,6 +1,8 @@
 using JazaniTaller.Application.Admins.Dtos.Roles.Mappers;
 using JazaniTaller.Infraestructure.Cores.Contexts;
 using JazaniTaller.Application.Cores.Contexts;
+using Autofac.Extensions.DependencyInjection;
+using Autofac;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,10 +20,12 @@ builder.Services.addInfraestructureServices(builder.Configuration);
 builder.Services.AddApplicationServices();
 
 
-//AutoMapper 
-builder.Services.AddAutoMapper(typeof(RoleMapper));
-builder.Services.AddAutoMapper(typeof(RoleMenuPermissionMapper));
-
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
+    .ConfigureContainer<ContainerBuilder>(options =>
+    {
+        options.RegisterModule(new InfraestructureAutofacModule());
+        options.RegisterModule(new ApplicationAutofacModule());
+    });
 
 var app = builder.Build();
 

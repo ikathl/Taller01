@@ -1,12 +1,10 @@
 ﻿using JazaniTaller.Domain.Admins.Models;
+using JazaniTaller.Domain.Cores.Repositories;
 
 namespace JazaniTaller.Domain.Admins.Repositores
 {
-    public interface IRoleMenuPermissionRepository
+    public interface IRoleMenuPermissionRepository:ICrudRepository<RoleMenuPermission, int>
     {
-        Task<IReadOnlyList<RoleMenuPermission>> FindAllAsync();
-        Task<RoleMenuPermission?> FindByIdAsync(int id);
-        Task<RoleMenuPermission?> SaveAsync(RoleMenuPermission office);
-        Task<RoleMenuPermission?> FindByIdCompuesto(int roleId, int menuId, int permissionId);
+        //Task<RoleMenuPermission?> FindByIdCompuesto(int roleId, int menuId, int permissionId);
     }
 }

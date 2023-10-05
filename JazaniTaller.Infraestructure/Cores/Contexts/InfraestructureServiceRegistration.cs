@@ -1,6 +1,4 @@
-﻿using JazaniTaller.Domain.Admins.Repositores;
-using JazaniTaller.Infraestructure.Admins.Persistances;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -14,8 +12,8 @@ namespace JazaniTaller.Infraestructure.Cores.Contexts
             {
                 options.UseSqlServer(configuration.GetConnectionString("DbConnection"));
             });
-            services.AddTransient<IRoleRepository, RoleRepository>();
-            services.AddTransient<IRoleMenuPermissionRepository, RoleMenuPermissionRepository>();
+            //services.AddTransient<IRoleRepository, RoleRepository>();
+            //services.AddTransient<IRoleMenuPermissionRepository, RoleMenuPermissionRepository>();
             return services;
         }
     }

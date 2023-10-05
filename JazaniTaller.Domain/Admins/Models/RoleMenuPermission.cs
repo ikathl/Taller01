@@ -5,7 +5,7 @@
         public int RoleId { get; set; }
         public int MenuId { get; set; }
         public int PermissionId { get; set; }
-        public DateTimeOffset RegistrationDate { get; set; }
+        public DateTime RegistrationDate { get; set; }
         public bool State { get; set; }
     }
 }

@@ -1,15 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using JazaniTaller.Domain.Admins.Models;
+﻿using JazaniTaller.Domain.Admins.Models;
 using JazaniTaller.Infraestructure.Cores.Converters;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace JazaniTaller.Infraestructure.Admins.Configurations
 {
-    public class RoleConfiguration: IEntityTypeConfiguration<Role>
+    public class MenuConfiguration : IEntityTypeConfiguration<Role>
     {
         public void Configure(EntityTypeBuilder<Role> builder)
         {
-            builder.ToTable("role", "adm");
+            builder.ToTable("menu", "adm");
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Name).HasColumnName("name");
             builder.Property(x => x.Description).HasColumnName("description");
