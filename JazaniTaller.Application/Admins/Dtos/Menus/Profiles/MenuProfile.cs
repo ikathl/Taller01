@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using JazaniTaller.Application.Admins.Dtos.Menus.Profiles.Mappers;
 using JazaniTaller.Domain.Admins.Models;
 
 namespace JazaniTaller.Application.Admins.Dtos.Menus.Profiles
@@ -7,7 +8,8 @@ namespace JazaniTaller.Application.Admins.Dtos.Menus.Profiles
     {
         public MenuProfile()
         {
-            CreateMap<Menu, MenuDto>();
+            CreateMap<Menu, MenuDto>()
+                .AfterMap<MenuMapper>();
             CreateMap<Menu, MenuSimpleDto>();
             CreateMap<Menu, MenuSaveDto>().ReverseMap();
         }
