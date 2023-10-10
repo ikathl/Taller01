@@ -1,8 +1,10 @@
 ﻿using JazaniTaller.Api.Exceptions;
 using JazaniTaller.Application.MC.Dtos.Investments;
 using JazaniTaller.Application.MC.Services;
+using JazaniTaller.Core.Paginations;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace JazaniTaller.Api.Controllers.MCs
 {
@@ -26,7 +28,7 @@ namespace JazaniTaller.Api.Controllers.MCs
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(InvestmentDto))]
         [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorModel))]
-        public async Task<Results<NotFound, Ok<InvestmentDto>>> Get(int id)
+        public async Task<Results<NotFound<ErrorModel>, Ok<InvestmentDto>>> Get(int id)
         {
             var response = await _InvestmentService.FindByIdAsync(id);
             return TypedResults.Ok(response);
@@ -48,8 +50,14 @@ namespace JazaniTaller.Api.Controllers.MCs
         [HttpDelete("{id}")]
         public async Task<InvestmentDto> Delete(int id)
         {
-            return await _InvestmentService.DisableAsync(id);
+            return await _InvestmentService.DisabledAsync(id);
         }
+        [HttpGet("PaginatedSearch")]
+        public async Task<ResponsePagination<InvestmentDto>> PaginatedSearch([FromQuery] RequestPagination<InvestmentFilterDto> request)
+        {
+            return await _InvestmentService.PaginatedSearch(request);
+        }
+
     }
 }
 

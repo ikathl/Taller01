@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\JazaniTaller.Application\JazaniTaller.Application.csproj" />
+    <ProjectReference Include="..\JazaniTaller.Core\JazaniTaller.Core.csproj" />
     <ProjectReference Include="..\JazaniTaller.Infraestructure\JazaniTaller.Infraestructure.csproj" />
   </ItemGroup>
 

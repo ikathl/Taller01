@@ -5,11 +5,13 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JazaniTaller.Api", "JazaniTaller01\JazaniTaller.Api.csproj", "{E9CFC34A-9AC2-4350-84E0-8F00D5B7678F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JazaniTaller.Application", "JazaniTaller.Application\JazaniTaller.Application.csproj", "{AF73E762-B12E-4A6D-9115-0E11D2E40620}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JazaniTaller.Application", "JazaniTaller.Application\JazaniTaller.Application.csproj", "{AF73E762-B12E-4A6D-9115-0E11D2E40620}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JazaniTaller.Domain", "JazaniTaller.Domain\JazaniTaller.Domain.csproj", "{8A6652CB-4D3C-4CC6-A1A3-D91393FA8F94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JazaniTaller.Domain", "JazaniTaller.Domain\JazaniTaller.Domain.csproj", "{8A6652CB-4D3C-4CC6-A1A3-D91393FA8F94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JazaniTaller.Infraestructure", "JazaniTaller.Infraestructure\JazaniTaller.Infraestructure.csproj", "{ECB7F377-33D7-450B-A667-5ED8CB8E63A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JazaniTaller.Infraestructure", "JazaniTaller.Infraestructure\JazaniTaller.Infraestructure.csproj", "{ECB7F377-33D7-450B-A667-5ED8CB8E63A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JazaniTaller.Core", "JazaniTaller.Core\JazaniTaller.Core.csproj", "{26C644EA-6A00-4199-8279-3562F5BB142B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{ECB7F377-33D7-450B-A667-5ED8CB8E63A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECB7F377-33D7-450B-A667-5ED8CB8E63A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECB7F377-33D7-450B-A667-5ED8CB8E63A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26C644EA-6A00-4199-8279-3562F5BB142B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26C644EA-6A00-4199-8279-3562F5BB142B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26C644EA-6A00-4199-8279-3562F5BB142B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26C644EA-6A00-4199-8279-3562F5BB142B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

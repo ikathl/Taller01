@@ -10,4 +10,8 @@
     <PackageReference Include="Microsoft.SqlServer.Types" Version="160.1000.6" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JazaniTaller.Core\JazaniTaller.Core.csproj" />
+  </ItemGroup>
+
 </Project>

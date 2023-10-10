@@ -1,13 +1,9 @@
-﻿using JazaniTaller.Application.MC.Dtos.Investments;
+﻿using JazaniTaller.Application.Cores.Services;
+using JazaniTaller.Application.MC.Dtos.Investments;
 
 namespace JazaniTaller.Application.MC.Services
 {
-    public interface IInvestmentService
+    public interface IInvestmentService: ICrudService<InvestmentDto, InvestmentSaveDto,int>,IPaginatedService<InvestmentDto, InvestmentFilterDto>
     {
-        Task<IReadOnlyList<InvestmentDto>> FindAllAsync();
-        Task<InvestmentDto?> FindByIdAsync(int id);
-        Task<InvestmentDto> CreateAsync(InvestmentSaveDto saveDto);
-        Task<InvestmentDto> EditAsync(int id, InvestmentSaveDto saveDto);
-        Task<InvestmentDto> DisableAsync(int id);
     }
 }

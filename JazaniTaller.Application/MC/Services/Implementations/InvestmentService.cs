@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using JazaniTaller.Domain.MC.Repositories;
 using JazaniTaller.Application.MC.Dtos.Investments;
 using JazaniTaller.Domain.MC.Models;
+using JazaniTaller.Core.Paginations;
 
 namespace JazaniTaller.Application.MC.Services.Implementation
 {
@@ -55,7 +56,7 @@ namespace JazaniTaller.Application.MC.Services.Implementation
             return _mapper.Map<InvestmentDto>(InvestmentSaved);
         }
 
-        public async Task<InvestmentDto> DisableAsync(int id)
+        public async Task<InvestmentDto> DisabledAsync(int id)
         {
             Investment Investment = await _InvestmentRepository.FindByIdAsync(id);
 
@@ -68,6 +69,14 @@ namespace JazaniTaller.Application.MC.Services.Implementation
         private NotFoundCoreException InvestmentNotFound(int id)
         {
             return new NotFoundCoreException("Investment no encontrado para el id: " + id);
+        }
+
+        public async Task<ResponsePagination<InvestmentDto>> PaginatedSearch(RequestPagination<InvestmentFilterDto> request)
+        {
+            var entity = _mapper.Map<RequestPagination<Investment>>(request);
+            var response=await _InvestmentRepository.PaginatedSearch(entity);
+            
+            return _mapper.Map<ResponsePagination<InvestmentDto>>(response);
         }
     }
 }
