@@ -6,6 +6,17 @@ using JazaniTaller.Application.Cores.Contexts;
 using JazaniTaller.Infraestructure.Cores.Contexts;
 using Serilog;
 using Serilog.Events;
+using JazaniTaller.Core.Securities.Services;
+using Jazani.Core.Securities.Services.Implementations;
+using Microsoft.AspNetCore.Identity;
+using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +37,11 @@ builder.Logging.AddSerilog(logger);
 builder.Services.AddControllers(Options =>
 {
     Options.Filters.Add(new ValidationFilter());
+
+    AuthorizationPolicy authorizationPolicy = new AuthorizationPolicyBuilder()
+    .RequireAuthenticatedUser()
+    .Build();
+    Options.Filters.Add(new AuthorizeFilter());
 });
 //Route options
 
@@ -35,9 +51,57 @@ builder.Services.Configure<RouteOptions>(options =>
     options.LowercaseQueryStrings = true;
 });
 
+builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
+
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//passwordhasher
+builder.Services.Configure<PasswordHasherOptions>(options =>
+{
+    options.CompatibilityMode = PasswordHasherCompatibilityMode.IdentityV3;
+});
+
+// ISecurityService
+builder.Services.AddTransient<ISecurityService, SecurityService>();
+
+//JWT
+string jwtSecretKey = builder.Configuration.GetSection("Security:JwtSecrectKey").Get<string>();
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    byte[] key = Encoding.ASCII.GetBytes(jwtSecretKey);
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateLifetime = true,
+        ValidIssuer = "",
+        ValidAudience = "",
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateIssuerSigningKey = true
+    };
+});
+
+// AuthorizeOperationFilter
+builder.Services.AddSwaggerGen(options =>
+{
+    options.OperationFilter<AuthorizeOperationFilter>();
+    string schemeName = "Bearer";
+    options.AddSecurityDefinition(schemeName, new OpenApiSecurityScheme()
+    {
+        Name = schemeName,
+        BearerFormat = "JWT",
+        Scheme = "bearer",
+        Description = "Add token.",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http
+    });
+});
 
 //infraestruture
 builder.Services.addInfraestructureServices(builder.Configuration);
