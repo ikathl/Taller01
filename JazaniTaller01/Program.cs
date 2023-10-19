@@ -127,6 +127,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseCors(options =>
+{
+    options.AllowAnyHeader()
+    .AllowAnyOrigin()
+    .AllowAnyOrigin()
+    .Build();
+});
 
 app.UseMiddleware<ExceptionMiddleware>();
 
